@@ -57,12 +57,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define V24_CH1_Pin GPIO_PIN_0
-#define V24_CH1_GPIO_Port GPIOF
-#define V24_CH2_Pin GPIO_PIN_1
-#define V24_CH2_GPIO_Port GPIOF
-#define V24_CH3_Pin GPIO_PIN_2
-#define V24_CH3_GPIO_Port GPIOF
 #define Accel_CS_Pin GPIO_PIN_3
 #define Accel_CS_GPIO_Port GPIOF
 #define Gyro_CS_Pin GPIO_PIN_4

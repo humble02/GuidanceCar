@@ -7,6 +7,9 @@ extern "C"{
 }
 #include "periph/bmi088.h"
 #include "dwt_api.h"
+
+uint8_t rrr[6];
+
 namespace imu {
     using namespace bsp;
     template<typename T>
@@ -27,13 +30,18 @@ namespace imu {
         GYRO_SEN = reg::GYRO_2000_SEN;
 
         error_ = Error::NO_ERROR;
-        error_ = (TestAccel() != Error::NO_ERROR) ? Error::SELF_TEST_ACCEL_ERROR : InitAccel();
+
         error_ = (TestGyro() != Error::NO_ERROR) ? Error::SELF_TEST_GYRO_ERROR : InitGyro();
+
+        error_ = (TestAccel() != Error::NO_ERROR) ? Error::SELF_TEST_ACCEL_ERROR : InitAccel();
+
         GetOffset();
         state_ = error_ != Error::NO_ERROR ? State::STATE_LOST : State::STATE_CONNECTED;
     }
 
     void Bmi088::Reset() {
+        gpio_accel_.Set();
+        gpio_gyro_.Set();
         accel_data_ = {0.0f, 0.0f, 0.0f};
         gyro_data_ = {0.0f, 0.0f, 0.0f};
         temperature = 0;
@@ -107,7 +115,7 @@ namespace imu {
 
             // read response accel
             ReadMultiReg(gpio_accel_, reg::ACCEL_XOUT_L, buff, 6);
-
+            *rrr = *buff;
             self_test_accel[write_reg_num][0] = (int16_t) ((buff[1]) << 8) | buff[0];
             self_test_accel[write_reg_num][1] = (int16_t) ((buff[3]) << 8) | buff[2];
             self_test_accel[write_reg_num][2] = (int16_t) ((buff[5]) << 8) | buff[4];
@@ -142,6 +150,43 @@ namespace imu {
 
         return Error::NO_ERROR;
     }
+    uint8_t buff[8] = {0, 0, 0, 0, 0, 0};
+    void Bmi088::Decode() {
+
+        int16_t raw_temp;
+
+        state_ = State::STATE_PENDING;
+        update_dt = DWT_GetDeltaT(&last_update_tick);
+
+        ReadMultiReg(gpio_accel_, reg::ACCEL_XOUT_L, buff, 6);
+
+        accel_data_.x = ((int16_t) ((buff[1]) << 8) | buff[0]) * ACCEL_SEN * accel_scale_;
+        accel_data_.y = ((int16_t) ((buff[3]) << 8) | buff[2]) * ACCEL_SEN * accel_scale_;
+        accel_data_.z = ((int16_t) ((buff[5]) << 8) | buff[4]) * ACCEL_SEN * accel_scale_;
+
+        ReadMultiReg(gpio_gyro_, reg::GYRO_CHIP_ID, buff, 8);
+        if (buff[0] == reg::GYRO_CHIP_ID_VALUE) {
+            if (caliOffset) {
+                gyro_data_.pitch = ((int16_t) ((buff[3]) << 8) | buff[2]) * GYRO_SEN - gyro_offset_[0];
+                gyro_data_.row = ((int16_t) ((buff[5]) << 8) | buff[4]) * GYRO_SEN - gyro_offset_[1];
+                gyro_data_.yaw = ((int16_t) ((buff[7]) << 8) | buff[6]) * GYRO_SEN - gyro_offset_[2];
+            } else {
+                gyro_data_.pitch = ((int16_t) ((buff[3]) << 8) | buff[2]) * GYRO_SEN;
+                gyro_data_.row = ((int16_t) ((buff[5]) << 8) | buff[4]) * GYRO_SEN;
+                gyro_data_.yaw = ((int16_t) ((buff[7]) << 8) | buff[6]) * GYRO_SEN;
+            }
+        }
+        ReadMultiReg(gpio_accel_, reg::TEMP_M, buff, 2);
+
+        raw_temp = (int16_t) ((buff[0] << 3) | (buff[1] >> 5));
+        if (raw_temp > 1023) {
+            raw_temp -= 2048;
+        }
+
+        temperature = raw_temp * reg::TEMP_FACTOR + reg::TEMP_OFFSET;
+        state_ = State::STATE_CONNECTED;
+    }
+
 
     void Bmi088::ReadSingleReg(GPIO &gpio, uint8_t reg, uint8_t data) {
         gpio.Reset();
@@ -153,6 +198,7 @@ namespace imu {
         data = spi_.SwapAByte(0x55);
         gpio.Set();
     }
+    
 
     void Bmi088::WriteSingleReg(GPIO &gpio, uint8_t reg, uint8_t data) {
         gpio.Reset();
@@ -166,9 +212,10 @@ namespace imu {
         spi_.SwapAByte((reg | 0x80));
 
         //@TODO ???
-//        spi_.SwapAByte((reg | 0x80));
+        // spi_.SwapAByte((reg | 0x80));
 
         spi_.ReadMultiReg(data, data_len);
+
         gpio.Set();
     }
 

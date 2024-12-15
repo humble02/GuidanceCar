@@ -18,6 +18,8 @@ extern "C" {
 #include "spi_api.h"
 #include "gpio_api.h"
 
+
+
 namespace imu {
 
     constexpr float kGravity = 9.81f;
@@ -31,25 +33,27 @@ namespace imu {
         STATE_PENDING = 4
     };
 
+    typedef struct{
+        float x;
+        float y;
+        float z;
+    }AccelData;
+    typedef struct{
+        float yaw;
+        float pitch;
+        float row;
+    }SpeedData;
+
 
     class Bmi088 {
     public:
-        using AccelData = struct{
-            float x;
-            float y;
-            float z;
-        };
-        using SpeedData = struct{
-            float yaw;
-            float pitch;
-            float row;
-        };
+
         State state_;
         bsp::SPI &spi_;
         bsp::GPIO &gpio_accel_;
         bsp::GPIO &gpio_gyro_;
-        AccelData accel_data_{0.0f, 0.0f, 0.0f};
-        SpeedData gyro_data_{0.0f, 0.0f, 0.0f};
+        AccelData accel_data_{.x = 0.0f, .y = 0.0f, .z = 0.0f};
+        SpeedData gyro_data_{.yaw = 0.0f, .pitch = 0.0f, .row = 0.0f};
 
         float gyro_offset_[3];
         float accel_offset_[3];
@@ -69,6 +73,14 @@ namespace imu {
         Error error_{Error::NO_ERROR};
 
 
+        Bmi088(bsp::SPI &spi, bsp::GPIO &gpio_accel, bsp::GPIO &gpio_gyro)
+        : spi_(spi), gpio_accel_(gpio_accel), gpio_gyro_(gpio_gyro){
+            state_ = State::STATE_NULL;
+            gNorm_ = 9.8F;
+            accel_data_ = {0.0f, 0.0f, 0.0f};
+            gyro_data_ = {0.0f, 0.0f, 0.0f};
+        }
+
         void Init();
         void Reset();
         Error InitAccel();
@@ -76,6 +88,7 @@ namespace imu {
 
         Error TestAccel();
         Error TestGyro();
+        void Decode();
 
 
 
