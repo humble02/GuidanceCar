@@ -22,7 +22,7 @@ namespace bsp{
 
         void Stop();
 
-        void SetDuty(float duty);
+        void SetDuty(int duty);
 
         void SetPsc(int16_t psc);
 

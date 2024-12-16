@@ -1,0 +1,43 @@
+//
+// Created by 59794 on 2024/12/15.
+//
+#include "periph/toymotor.h"
+
+using namespace periph;
+
+void toyMotor::init() {
+    speed_port_.Init();
+    speed_port_.Start();
+}
+
+void toyMotor::SetDir(Direction dir) {
+    direction_ = dir;
+}
+
+void toyMotor::SetSpeed(float speed) {
+    speed *= static_cast<int>(direction_);
+    speed_ = speed;
+}
+
+periphState toyMotor::Output() {
+    if (speed_ == 0) {
+        forward_gpio_.Set();
+        backward_gpio_.Set();
+    }else {
+        if(speed_ > 0){
+            forward_gpio_.Set();
+            backward_gpio_.Reset();
+        }else {
+            forward_gpio_.Reset();
+            backward_gpio_.Set();
+        }
+    }
+    const auto duty = static_cast<int>(speed_) /1000 * 5000;
+    speed_port_.SetDuty(duty);
+    speed_port_.Output();
+    return periphState::kOK;
+}
+
+
+
+

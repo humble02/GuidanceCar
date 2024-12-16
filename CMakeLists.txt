@@ -12,6 +12,7 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
+add_compile_options(-mfloat-abi=hard -mfpu=fpv5-d16)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -27,12 +28,20 @@ include("cmake/gcc-arm-none-eabi.cmake")
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
-# Enable CMake support for ASM and C languages
-enable_language(C CXX ASM)
+
 
 # Core project settings
 project(${CMAKE_PROJECT_NAME})
+
+# Enable CMake support for ASM and C languages
+enable_language(C CXX ASM)
+
 message("Build type: " ${CMAKE_BUILD_TYPE})
+
+
+
+include_directories()
+link_directories()
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
@@ -42,7 +51,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         BSP/src/i2c_api.cpp
         User/include/task/test.h
         User/src/task/test.cpp
-        User/include/periph/bmi088_reg.h)
+        User/include/periph/bmi088_reg.h
+        )
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
@@ -62,12 +72,11 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         BSP/include
         Device/include
         third/CMSIS-DSP/1.15.0/include
+        third/IMU/include
+
 )
 
-# Link directories setup
-target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined library search paths
-)
+
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
@@ -84,9 +93,16 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
 )
 
+
+# Link directories setup
+target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/third/IMU/lib
+        # Add user defined library search paths
+)
+
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
-    # Add user defined libraries
+    ${CMAKE_SOURCE_DIR}/third/IMU/lib/libalgobsx.a
+        # Add user defined libraries
 )

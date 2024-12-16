@@ -2,8 +2,8 @@
 // Created by 18759 on 2024/12/2.
 //
 
-#ifndef CHASSIS_H
-#define CHASSIS_H
+#ifndef BMI088_H
+#define BMI088_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -94,13 +94,20 @@ namespace imu {
 
     private:
 
-        void WriteSingleReg(bsp::GPIO &gpio,uint8_t reg, uint8_t data);
+        // void WriteSingleReg(bsp::GPIO &gpio,uint8_t reg, uint8_t data);
+        //
+        //
+        // void ReadSingleReg(bsp::GPIO &gpio,uint8_t reg, uint8_t data);
+        //
+        //
+        // void ReadMultiReg(bsp::GPIO &gpio,uint8_t reg, uint8_t *data, uint16_t data_len);
 
-
-        void ReadSingleReg(bsp::GPIO &gpio,uint8_t reg, uint8_t data);
-
-
-        void ReadMultiReg(bsp::GPIO &gpio,uint8_t reg, uint8_t *data, uint16_t data_len);
+        void WriteAccelSingleReg(uint8_t reg, uint8_t data);
+        uint8_t ReadAccelSingleReg(uint8_t reg);
+        void ReadAccelMultiReg(uint8_t reg, uint8_t *data, uint16_t data_len);
+        void WriteGyroSingleReg(uint8_t reg, uint8_t data);
+        uint8_t ReadGyroSingleReg(uint8_t reg);
+        void ReadGyroMultiReg(uint8_t reg, uint8_t *data, uint16_t data_len);
 
         void SetOffset();
         void GetOffset();
@@ -109,4 +116,4 @@ namespace imu {
 }
 
 #endif
-#endif //CHASSIS_H
+#endif //BMI088_H
