@@ -63,7 +63,7 @@ const insData_t* GetInsData() {
     return &ins_data;
 }
 
-void INSTaskStart(void)
+void InsTaskStart(void)
 {
     xTaskCreate(INS_Task, "LEDTask", 256, NULL, 7, NULL);
 }
