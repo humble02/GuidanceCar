@@ -19,7 +19,7 @@ void toyMotor::SetSpeed(float speed) {
     speed_ = speed;
 }
 
-periphState toyMotor::Output() {
+periph::periphState toyMotor::Output() {
     if (speed_ == 0) {
         forward_gpio_.Set();
         backward_gpio_.Set();
@@ -35,7 +35,7 @@ periphState toyMotor::Output() {
     const auto duty = static_cast<int>(speed_) /1000 * 5000;
     speed_port_.SetDuty(duty);
     speed_port_.Output();
-    return periphState::kOK;
+    return periph::periphState::kOK;
 }
 
 

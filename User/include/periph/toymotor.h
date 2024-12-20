@@ -14,6 +14,9 @@ extern "C" {
 
 #ifdef __cplusplus
 
+#pragma once
+
+
 #include "pwm_api.h"
 #include "gpio_api.h"
 #include "periph_state.h"
@@ -32,11 +35,11 @@ namespace periph {
             speed_ = 0.F;
             direction_ = Direction::kFront;
         }
-        ~toyMotor();
+        ~toyMotor() = default;
         void init();
         void SetDir(Direction dir);
         void SetSpeed(float speed);
-        periphState Output();
+        periph::periphState Output();
     private:
         bsp::GPIO forward_gpio_;
         bsp::GPIO backward_gpio_;

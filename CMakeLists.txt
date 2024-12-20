@@ -36,6 +36,7 @@ project(${CMAKE_PROJECT_NAME})
 # Enable CMake support for ASM and C languages
 enable_language(C CXX ASM)
 
+message("单片机课设循迹小车项目，其名为" ${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 
@@ -45,13 +46,7 @@ link_directories()
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
-        User/include/periph/bmi088.h
-        User/src/periph/bmi088.cpp
-        BSP/include/i2c_api.h
-        BSP/src/i2c_api.cpp
-        User/include/task/test.h
-        User/src/task/test.cpp
-        User/include/periph/bmi088_reg.h
+
         )
 
 # Add STM32CubeMX generated sources
@@ -73,6 +68,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         Device/include
         third/CMSIS-DSP/1.15.0/include
         third/IMU/include
+        third/fsm
 
 )
 

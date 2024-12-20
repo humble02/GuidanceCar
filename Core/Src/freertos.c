@@ -86,6 +86,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
   LEDTaskStart();
   InsTaskStart();
+  ChassisTaskStart();
 
   /* USER CODE END Init */
 

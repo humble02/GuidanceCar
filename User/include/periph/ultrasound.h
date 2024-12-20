@@ -13,6 +13,7 @@ extern "C" {
 
 #ifdef __cplusplus
 
+
 #include "gpio_api.h"
 #include "pwm_api.h"
 #include "periph_state.h"
@@ -27,7 +28,7 @@ public:
     ~Ultrasound() = default;
 
     float GetDistance() const;
-    periphState Measure();
+    periph::periphState Measure();
 
 private:
     void TriggerSignal();

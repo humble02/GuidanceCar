@@ -27,22 +27,22 @@ bool Ultrasound::WaitForCaptureFlags() {
 }
 
 void Ultrasound::CalculateDistance() {
-    uint32_t ccr1 = __HAL_TIM_GET_COMPARE(&timer_, TIM_CHANNEL_1);
-    uint32_t ccr2 = __HAL_TIM_GET_COMPARE(&timer_, TIM_CHANNEL_2);
+    uint32_t ccr1 = __HAL_TIM_GET_COMPARE(&timer_, TIM_CHANNEL_3);
+    uint32_t ccr2 = __HAL_TIM_GET_COMPARE(&timer_, TIM_CHANNEL_4);
 
     float pulse_width = (ccr2 - ccr1) * 1e-6f;
     distance_ = 340.0f * pulse_width / 2.0f;
 }
 
-periphState Ultrasound::Measure() {
+periph::periphState Ultrasound::Measure() {
     // Reset timer and flags
     __HAL_TIM_SET_COUNTER(&timer_, 0);
     __HAL_TIM_CLEAR_FLAG(&timer_, TIM_FLAG_CC1);
     __HAL_TIM_CLEAR_FLAG(&timer_, TIM_FLAG_CC2);
 
     // Start input capture
-    HAL_TIM_IC_Start(&timer_, TIM_CHANNEL_1);
-    HAL_TIM_IC_Start(&timer_, TIM_CHANNEL_2);
+    HAL_TIM_IC_Start(&timer_, TIM_CHANNEL_3);
+    HAL_TIM_IC_Start(&timer_, TIM_CHANNEL_4);
 
     // Trigger the ultrasound sensor
     TriggerSignal();
@@ -51,14 +51,14 @@ periphState Ultrasound::Measure() {
     bool success = WaitForCaptureFlags();
 
     // Stop input capture
-    HAL_TIM_IC_Stop(&timer_, TIM_CHANNEL_1);
-    HAL_TIM_IC_Stop(&timer_, TIM_CHANNEL_2);
+    HAL_TIM_IC_Stop(&timer_, TIM_CHANNEL_3);
+    HAL_TIM_IC_Stop(&timer_, TIM_CHANNEL_4);
 
     if (success) {
         CalculateDistance();
-        return periphState::kOK;
+        return periph::periphState::kOK;
     } else {
-        return periphState::kFail;
+        return periph::periphState::kFail;
     }
 }
 

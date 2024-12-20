@@ -21,8 +21,9 @@ extern "C" {
 namespace periph {
     class boson {
     public:
+        boson(bsp::GPIO gpio) : gpio_(gpio), result_(false) {}
         boson();
-        ~boson();
+        ~boson() = default;
         void Detect() {
             result_ = gpio_.ReadPin();
         };
