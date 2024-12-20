@@ -29,6 +29,7 @@
 #include "task/ins.h"
 #include "task/chassis.h"
 #include "task/ui.h"
+#include "task/com.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,6 +88,7 @@ void MX_FREERTOS_Init(void) {
   LEDTaskStart();
   InsTaskStart();
   ChassisTaskStart();
+  ComTaskStart();
 
   /* USER CODE END Init */
 

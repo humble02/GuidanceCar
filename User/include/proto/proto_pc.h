@@ -5,11 +5,47 @@
 #ifndef PROTO_PC_H
 #define PROTO_PC_H
 
-#include <cstdint>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+    enum Mode{
+        kRemoteMode = 0,
+        kTrackingMode = 1,
+        kMappingMode = 2,
+        kGuidanceMode = 3,
+    };
+
+    enum Move {
+        kFrontMove = 0,
+        kBackMove = 1,
+        kLeftMove = 2,
+        kRightMove = 3,
+    };
+
+    enum SpeedLevel {
+        kFast = 0,
+        kSlow = 1,
+    };
+
+    typedef struct{
+        uint32_t  timestamp;
+        uint8_t connect_;
+        uint8_t move_;
+        uint8_t mode_;
+        uint8_t supercap_;
+        uint8_t speed_;
+        uint8_t stoptime_;
+
+    }PC2Board_t;
+
+    typedef struct{
+        uint32_t  timestamp;
+        uint8_t stopFlag_;
+        uint8_t move_;
+
+    }Board2PC_t;
 
 #ifdef __cplusplus
 }
@@ -17,42 +53,7 @@ extern "C" {
 
 #ifdef __cplusplus
 
-enum class Mode{
-    kRemote = 0,
-    kTracking = 1,
-    kMapping = 2,
-    kGuidance = 3,
-};
 
-enum class Move {
-    kFront = 0,
-    kBack = 1,
-    kLeft = 2,
-    kRight = 3,
-};
-
-enum class SpeedLevel {
-    kFast = 0,
-    kSlow = 1,
-};
-
-typedef struct{
-    uint32_t  timestamp;
-    uint8_t connect_;
-    uint8_t move_;
-    uint8_t mode_;
-    uint8_t supercap_;
-    uint8_t speed_;
-    uint8_t stoptime_;
-
-}PC2Board_t;
-
-typedef struct{
-  uint32_t  timestamp;
-  uint8_t stopFlag_;
-  uint8_t move_;
-
-}Board2PC_t;
 
 #endif
 

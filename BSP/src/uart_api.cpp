@@ -30,7 +30,7 @@ namespace bsp{
                 }
             }
             init_flag_ = true;
-            return (UART_Start_Receive_DMA(p_handle_, rx_data_, 128));
+            return (HAL_UART_Receive_IT(p_handle_, rx_data_, 128));
         }
         else
         {

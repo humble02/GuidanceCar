@@ -26,6 +26,8 @@
     bsp::GPIO road_left_gpio(*GPIOD, GPIO_PIN_14);
     bsp::GPIO road_right_gpio(*GPIOD, GPIO_PIN_11);
 
+    PC2Board_t data_from_PC = *GetRxData();
+
 /*
  *
  */
@@ -48,6 +50,7 @@
             station_arrive_ = false;
             state_ = StateMachine::kTracking;
             latest_side_road_ = RoadSide::kLeftRoad;
+            waiting_start_time_ = 0;
         }
         ~Chassis() = default;
 
@@ -67,6 +70,7 @@
         StateMachine last_state_;
         RoadSide latest_side_road_;
         fsm::stack chassis_sm_;
+        uint32_t waiting_start_time_;
 
         void fsmInit() {
             chassis_sm_.on(kInit, 'tick') = [&](const fsm::args &args) {
@@ -77,20 +81,34 @@
 
             chassis_sm_.on(kTracking, 'tick') = [&](const fsm::args &args) {
                 TrackingAction();
-                if (0) {
+                if (data_from_PC.mode_ == kRemoteMode) {
                     chassis_sm_.push(kRemote);
                     return;
                 }
                 if (obstacle_) {
                     chassis_sm_.push(kLeave);
+                }else if (station_arrive_) {
+                    chassis_sm_.push(kStop);
                 }else if (!on_road_) {
                     chassis_sm_.push(kAngle);
                 }
             };
 
+            chassis_sm_.on(kStop, 'push') = [&](const fsm::args &args) {
+                waiting_start_time_ = HAL_GetTick();
+            };
+
+            chassis_sm_.on(kStop, 'tick') = [&](const fsm::args &args) {
+                while ((HAL_GetTick() - waiting_start_time_) >= data_from_PC.timestamp * 1000) {
+                    SetSpeed(0, 0);
+                }
+                station_arrive_ = false;
+                chassis_sm_.push(kTracking);
+            };
+
             chassis_sm_.on(kAngle, 'tick') = [&](const fsm::args &args) {
                 AngleAction();
-                if (0) {
+                if (data_from_PC.mode_ == kRemoteMode) {
                     chassis_sm_.push(kRemote);
                     return;
                 }
@@ -103,7 +121,7 @@
 
             chassis_sm_.on(kLeave, 'tick') = [&](const fsm::args &args) {
                 LeavingAction();
-                if (0) {
+                if (data_from_PC.mode_ == kRemoteMode) {
                     chassis_sm_.push(kRemote);
                     return;
                 }
@@ -114,7 +132,7 @@
 
             chassis_sm_.on(kBack, 'tick') = [&](const fsm::args &args) {
                 BackAction();
-                if (0) {
+                if (data_from_PC.mode_ == kRemoteMode) {
                     chassis_sm_.push(kRemote);
                     return;
                 }
@@ -131,7 +149,7 @@
 
             chassis_sm_.on(kRemote, 'tick') = [&](const fsm::args &args) {
                 RemoteAction();
-                if (1) {
+                if (data_from_PC.mode_ == kTrackingMode) {
                     chassis_sm_.push(kTracking);
                 }
 
@@ -178,6 +196,9 @@
                 if (boson_left_.GetColor()) {
                     if (boson_right_.GetColor()) {
                         pos_ = TrackingState::kMiddle;
+                        if (!boson_left_road_.GetColor() && !boson_right_road_.GetColor()) {
+                            station_arrive_ = true;
+                        }
                     }else {
                         pos_ = TrackingState::kMidLeft;
                     }
@@ -252,8 +273,9 @@
         }
 
         void RemoteAction() {
-            // float buff =
-            SetSpeed(0,0);
+            float buff = data_from_PC.supercap_ ? 2 : 1;
+            SetSpeed(speed[data_from_PC.move_][0] * buff,
+                speed[data_from_PC.move_][1] * buff);
         }
 
     private:
@@ -268,6 +290,14 @@
     };
 
 Chassis chassis;
+
+const uint8_t GetStopFlag() {
+    return chassis.station_arrive_;
+}
+
+const uint8_t GetMoveState() {
+    return 0;
+}
 
 void Chassis_Task(void *parameter) {
     chassis.Init();
