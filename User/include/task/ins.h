@@ -24,6 +24,7 @@ extern "C" {
     }Euler;
 
     typedef struct {
+        Axis space_vel_;
         Axis space_pos_;
         Euler space_att_;
     }insData_t;
