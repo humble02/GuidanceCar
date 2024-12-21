@@ -1,0 +1,1070 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Cretnas.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_directories",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 98,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 104,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 70,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 66,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -fno-rtti -fno-exceptions -fno-threadsafe-statics -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=fpv5-d16"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "STM32H723xx"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/User/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/BSP/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/Device/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/CMSIS-DSP/1.15.0/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/IMU/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Core/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu17 -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=fpv5-d16"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "STM32H723xx"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/User/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/BSP/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/Device/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/CMSIS-DSP/1.15.0/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/IMU/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Core/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Include"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -x assembler-with-cpp -MMD -MP -g"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-mfpu=fpv5-d16"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "STM32H723xx"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/User/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/BSP/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/Device/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/CMSIS-DSP/1.15.0/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/STM32_design/GuidanceCar/third/IMU/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Core/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/STM32_design/GuidanceCar/cmake/stm32cubemx/../../Drivers/CMSIS/Include"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				87
+			]
+		}
+	],
+	"id" : "Cretnas::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -fno-rtti -fno-exceptions -fno-threadsafe-statics",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-LE:\\STM32_design\\GuidanceCar\\third\\IMU\\lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "E:\\STM32_design\\GuidanceCar\\third\\IMU\\lib\\libalgobsx.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "Cretnas",
+	"nameOnDisk" : "Cretnas.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				4,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				87
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "User/include/periph/bmi088.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/periph/bmi088.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "BSP/include/i2c_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/i2c_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "User/include/task/test.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/task/test.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "User/include/periph/bmi088_reg.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/callback.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/dwt_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/error.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/fdcan_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/gpio_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/pwm_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/spi_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "BSP/include/uart_api.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/dwt_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/fdcan_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/gpio_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/pwm_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/spi_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "BSP/src/uart_api.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/periph/boson.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/periph/oled.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/periph/periph_state.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/periph/toymotor.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/periph/ultrasound.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/task/chassis.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/task/ins.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "User/include/task/ui.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/periph/boson.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/periph/oled.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/periph/toymotor.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/periph/ultrasound.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/task/chassis.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/task/ins.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "User/src/task/ui.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/main.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/gpio.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/freertos.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/adc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/dma.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/fdcan.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/i2c.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/memorymap.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/spi.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/tim.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/usart.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/stm32h7xx_it.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/stm32h7xx_hal_msp.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/system_stm32h7xx.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/croutine.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/list.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/queue.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/tasks.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/timers.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/sysmem.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 1,
+			"path" : "Core/Src/syscalls.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 2,
+			"path" : "startup_stm32h723xx.s",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "EXECUTABLE"
+}

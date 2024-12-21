@@ -7,7 +7,13 @@
 
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
-
+#include "i2c.h"
+#include "main.h"
+#include "periph/oled.h"
+#include <iostream>
+#include <sstream>
+#include <iomanip>
+#include <cstdio>
 #ifdef __cplusplus
 extern "C" {
 #endif
